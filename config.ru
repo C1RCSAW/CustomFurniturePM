@@ -1,3 +1,5 @@
+#this file is the boot up for the application per Rack convention
+
 require './config/environment'
 
 if ActiveRecord::Migrator.needs_migration?
