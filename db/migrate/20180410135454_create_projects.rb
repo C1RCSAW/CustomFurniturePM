@@ -6,7 +6,8 @@ class CreateProjects < ActiveRecord::Migration[5.1]
       t.float :cost_to_produce
       t.float :price_to_client
       t.string :status
-      t.integer :user_id
+      t.integer :maker_id
+      t.integer :client_id
     end
   end
 end

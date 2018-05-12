@@ -8,5 +8,6 @@ end
 
 use Rack::MethodOverride
 use ProjectsController
-use UsersController
+use MakersController
+use ClientsController
 run ApplicationController

@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180511184945) do
+ActiveRecord::Schema.define(version: 20180512032710) do
+
+  create_table "clients", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
+  end
+
+  create_table "makers", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "furniture_type"
@@ -18,14 +30,9 @@ ActiveRecord::Schema.define(version: 20180511184945) do
     t.float "cost_to_produce"
     t.float "price_to_client"
     t.string "status"
-    t.integer "user_id"
+    t.integer "maker_id"
+    t.integer "client_id"
     t.string "name"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
   end
 
 end
