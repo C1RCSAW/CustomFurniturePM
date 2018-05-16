@@ -1,2 +1,2 @@
-class MakersController < ApplicationController
+class UsersController < ApplicationController
 end
