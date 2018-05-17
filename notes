@@ -13,6 +13,7 @@ projects = [{name: 'Staked Leg Coffee Table', furniture_type: 'table', material:
 projects.each do |project|
   Project.create(project)
 end
+<<<<<<< HEAD
 
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -84,3 +85,5 @@ Initialized project and stubbed out file structure, environment and g…  …
 @C1RCSAW
 C1RCSAW committed on Apr 6
 5919690  
+=======
+>>>>>>> 4276f3769fabc4ee87433fe187d6a9f01212d28c
