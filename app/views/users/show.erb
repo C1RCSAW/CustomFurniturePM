@@ -1,10 +1,9 @@
-<h1> <a href="/clients/new">Add New Client</a> </h1>
+<!-- <h1> <a href="/clients/new">Add New Client</a> </h1>
 
-    <h1> <a href="/logout">Logout</a></h1>
+    <h1> <a href="/logout">Logout</a></h1> -->
 
     <h1> Hello, <%= @user.name %>, Here is your list of clients. </h1>
 
     <% @user.clients.each do |client| %>
-        <h3> <%= client.name %> </h3>
         <h3> <a href="/clients/<%= client.id %>"> <%= client.name %></a> </h3>
     <% end %>

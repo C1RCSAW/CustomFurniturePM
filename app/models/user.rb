@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :clients ## => @user.clients
-  has_many :projects, through: :clients ## ? => @maker.client.projects ?
+  has_many :projects, through: :clients ## ? => @user.clients.projects ?
   # has_secure_password
 
   # validates :name, :username, :email, presence: true
