@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
-  has_many :clients ## => @maker.clients
+  has_many :clients ## => @user.clients
   has_many :projects, through: :clients ## ? => @maker.client.projects ?
-  has_secure_password
+  # has_secure_password
 
-  validates :username, :email, presence: true
-  validates_uniqueness_of :username
+  # validates :name, :username, :email, presence: true
+  # validates_uniqueness_of :username
 
   def slug
     self.username.downcase.gsub(" ", "-")
