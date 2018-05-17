@@ -8,7 +8,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    @projects = Project.all
+    # @projects = Project.all
     erb :index
   end
 
