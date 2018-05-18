@@ -1,4 +1,4 @@
-users = [{name: "bobby"},{name: "sue"}, {name: "frank"}]
+users = [{name: "bobby", username: "bobby84"},{name: "sue", username: "souix42"}, {name: "frank", username: "frankfurter01"}]
 
 users.each do |user|
   User.create(user)

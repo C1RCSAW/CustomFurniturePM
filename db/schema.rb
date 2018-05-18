@@ -24,11 +24,9 @@ ActiveRecord::Schema.define(version: 20180511235418) do
     t.string "furniture_type"
     t.string "material"
     t.string "description"
-    t.string "image_url"
     t.float "cost_to_produce"
     t.float "price_to_client"
     t.string "status"
-    t.string "comments"
     t.integer "client_id"
   end
 
