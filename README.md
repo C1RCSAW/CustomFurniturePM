@@ -1,10 +1,10 @@
-# Sinatra-Furniture-Project-Management
+# CustomFurniturePM
 
 A web application for makers to manage custom furniture projects. Users can register accounts, add/view/edit/delete clients, and add/view/edit/delete projects for each client.
 
 ## Development
 
-Sinatra-Furniture-Project-Management requires bundler for all of its gem dependencies. If you do not already have it installed, run
+CustomFurniturePM requires bundler for all of its gem dependencies. If you do not already have it installed, run
 
 ```$ gem install bundler```
 
@@ -14,4 +14,4 @@ then:
 
 ## License
 
-Sinatra-Furniture-Project-Management is released under the MIT License. Check LICENSE.md for more information.
+CustomFurniturePM is released under the MIT License. Check LICENSE.md for more information.
