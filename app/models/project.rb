@@ -3,7 +3,7 @@ class Project < ActiveRecord::Base
   has_many :costs ## => @project.costs
 
   def total_cost
-    self.costs each do |amount|
+    self.costs.sum(:amount)
   end
 
   def profit
