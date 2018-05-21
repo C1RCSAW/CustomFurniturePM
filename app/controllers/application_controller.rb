@@ -8,8 +8,12 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    # @projects = Project.all
-    erb :index
+    if logged_in?
+      user = User.find(current_user.id)
+      redirect to "/users/#{user.slug}"
+    else
+      erb :index
+    end
   end
 
   helpers do
