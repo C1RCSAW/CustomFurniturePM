@@ -8,4 +8,14 @@ class ClientsController < ApplicationController
       redirect to '/login'
     end
   end
+
+  get '/clients' do
+    if logged_in?
+      @user = User.find_by_slug(params[:slug])
+      @client = Client.find_by_id(params[:id])
+      erb :'clients/clients'
+    else
+      redirect to '/login'
+    end
+  end
 end
