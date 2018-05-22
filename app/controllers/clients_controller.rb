@@ -11,7 +11,7 @@ class ClientsController < ApplicationController
 
   get '/clients' do
     if logged_in?
-      @user = User.find_by_slug(params[:slug])
+      @user = User.find(current_user.id)
       @client = Client.find_by_id(params[:id])
       erb :'clients/clients'
     else
