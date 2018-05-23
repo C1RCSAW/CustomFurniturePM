@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   get '/signup' do
   if logged_in?
-    redirect to '/clients'
+    redirect to '/clients' 
   else
     erb :'users/create_user'
   end
