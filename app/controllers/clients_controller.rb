@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
   get '/clients/:id' do
     if logged_in?
       @client = Client.find_by_id(params[:id])
-      erb :'clients/show_client'
+      erb :'clients/show'
     else
       redirect to '/login'
     end
@@ -13,7 +13,7 @@ class ClientsController < ApplicationController
     if logged_in?
       @user = User.find(current_user.id)
       @client = Client.find_by_id(params[:id])
-      erb :'clients/clients'
+      erb :'clients/index'
     else
       redirect to '/login'
     end
