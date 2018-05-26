@@ -11,18 +11,22 @@ class ClientsController < ApplicationController
     end
   end
 
-  post '/clients' do
-    params.to_s
-  end
-
-
-
   get '/clients/new' do
     if logged_in?
       @user = User.find(current_user.id)
       erb :'clients/new'
     else
       redirect '/login'
+    end
+  end
+
+  post '/clients' do
+    client = current_user.clients.build(params[:client])
+    if client.save
+      redirect '/clients'
+    else
+      # flash[:message] = client.errors.collect{|field, error| "#{field.to_s.capitalize}: #{error}"}.join("<br/>")
+      redirect '/client/new'
     end
   end
 
@@ -34,6 +38,18 @@ class ClientsController < ApplicationController
       redirect '/login'
     end
   end
+
+  get '/clients/:id/edit' do
+    if logged_in?
+     @user = User.find(current_user.id)
+     @client = Client.find(params[:id])
+     erb :'clients/edit'
+   else
+     redirect to '/login'
+   end
+ end
+
+
 
 
 end

@@ -1,12 +1,11 @@
-<h1>New Client</h1>
-<% if flash.has?(:message) %>
-    <div class="alert alert-danger" role="alert"><%= flash[:message] %></div>
-<% end %>
+<h1>New Client for <%= @user.name %></h1>
+
 <form action="/clients" method="post">
-<input class="" type="text" name="client[name]" placeholder="Client Name*" required>
-<br/>
-<input class=""type="email" name="client[email]" placeholder="Client Email*" required>
-<br/>
-<input class=""type="text" name="client[phone_number]" placeholder="Client Phone Number">
-<br/>
-<input class="" type="submit" value="Create Client">
+  <input class="" type="text" name="client[name]" placeholder="Client Name*" required>
+  <br/>
+  <input class=""type="email" name="client[email]" placeholder="Client Email*" required>
+  <br/>
+  <input class=""type="text" name="client[phone_number]" placeholder="Client Phone Number">
+  <br/>
+  <input class="" type="submit" value="Create Client">
+</form>

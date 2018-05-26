@@ -10,4 +10,9 @@
   <input type="submit" value="Delete Client">
 </form>
 
+<form method="post" action="/clients/<%=@client.id%>/edit">
+  <input id="hidden" type="hidden" name="_method" value="GET">
+  <input type="submit" value="Edit Client">
+</form>
+
 <a href="/clients/<%=@client.id%>/edit">Edit Client </a>
