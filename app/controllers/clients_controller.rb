@@ -7,16 +7,22 @@ class ClientsController < ApplicationController
       @client = Client.find_by_id(params[:id])
       erb :'clients/index'
     else
-      redirect to '/login'
+      redirect '/login'
     end
   end
+
+  post '/clients' do
+    params.to_s
+  end
+
+
 
   get '/clients/new' do
     if logged_in?
       @user = User.find(current_user.id)
       erb :'clients/new'
     else
-      redirect to '/login'
+      redirect '/login'
     end
   end
 
@@ -25,7 +31,7 @@ class ClientsController < ApplicationController
       @client = Client.find_by_id(params[:id])
       erb :'clients/show'
     else
-      redirect to '/login'
+      redirect '/login'
     end
   end
 
