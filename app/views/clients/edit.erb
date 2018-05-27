@@ -1,0 +1,19 @@
+<h1>Edit <%= @user.name %>'s Client, <%= @client.name %> </h1>
+
+
+<form method="post" action="/clients/<%=@client.id%>">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+  <input class="" type="text" name="client[name]" placeholder="Client Name*" value="<%= @client.name %>" required>
+  <br/>
+  <input class="" type="email" name="client[email]" placeholder="Client Email*" value="<%= @client.email %>" required>
+  <br/>
+  <input class="" type="text" name="client[phone_number]" placeholder="Client Phone Number" value="<%= @client.phone_number %>">
+  <br/>
+  <input class="" type="submit" value="Edit Client">
+</form>
+
+
+<form method="post" action="/clients/<%=@client.id%>">
+  <input id="hidden" type="hidden" name="_method" value="GET">
+  <input type="submit" value="Cancel">
+</form>

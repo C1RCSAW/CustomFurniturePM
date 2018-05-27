@@ -24,7 +24,6 @@ class ClientsController < ApplicationController
     if client.save
       redirect '/clients'
     else
-      # flash[:message] = client.errors.collect{|field, error| "#{field.to_s.capitalize}: #{error}"}.join("<br/>")
       redirect '/client/new'
     end
   end
@@ -49,6 +48,7 @@ class ClientsController < ApplicationController
    end
  end
 
- patch 'clients/:id/edit' do
+ patch 'clients/:id' do
+
  end
 end

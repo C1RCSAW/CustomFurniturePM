@@ -1,6 +1,6 @@
 <h1>New Client for <%= @user.name %></h1>
 
-<form action="/clients" method="post">
+<form method="post" action="/clients">
   <input class="" type="text" name="client[name]" placeholder="Client Name*" required>
   <br/>
   <input class=""type="email" name="client[email]" placeholder="Client Email*" required>
@@ -8,4 +8,9 @@
   <input class=""type="text" name="client[phone_number]" placeholder="Client Phone Number">
   <br/>
   <input class="" type="submit" value="Create Client">
+</form>
+
+<form method="post" action="/clients">
+  <input id="hidden" type="hidden" name="_method" value="GET">
+  <input type="submit" value="Cancel">
 </form>
