@@ -1,14 +1,2 @@
-<h1><%= @client.name %>'s custom furniture projects</h1>
+<h1><%= @client.name %>'s custom furniture project</h1>
 <h1><%= @project.name %></h1>
-
-<% @client.projects.each do |client| %>
-    <h3> <a href="/projects/<%= project.id %>"> <%= project.name %></a> </h3>
-<% end %>
-
-
-<form method="post" action="/clients/<%=@client.id%>/delete">
-  <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Client">
-</form>
-
-<a href="/clients/<%=@client.id%>/edit">Edit Client </a>

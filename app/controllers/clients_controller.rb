@@ -32,6 +32,7 @@ class ClientsController < ApplicationController
 
   get '/clients/:id' do
     if logged_in?
+      @user = User.find(current_user.id)
       @client = Client.find_by_id(params[:id])
       erb :'clients/show'
     else
