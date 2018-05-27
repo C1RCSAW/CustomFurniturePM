@@ -4,7 +4,6 @@ class ClientsController < ApplicationController
   get '/clients' do
     if logged_in?
       @user = User.find(current_user.id)
-      @client = Client.find_by_id(params[:id])
       erb :'clients/index'
     else
       redirect '/login'
@@ -50,7 +49,6 @@ class ClientsController < ApplicationController
    end
  end
 
-
-
-
+ patch 'clients/:id/edit' do
+ end
 end

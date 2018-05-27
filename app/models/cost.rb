@@ -1,3 +1,3 @@
 class Cost <ActiveRecord::Base
-  belongs_to :project ## => @project.cost
+  belongs_to :project ## => @project.costs
 end

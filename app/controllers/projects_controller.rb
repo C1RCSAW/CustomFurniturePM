@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   get '/projects' do
     if logged_in?
       @user = User.find(current_user.id)
-      # @client = Client.find_by_id(params[:id])
+      @client = Client.find_by_id(params[:id])
       erb :'projects/index'
     else
       redirect '/login'
@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
   get '/projects/new' do
     if logged_in?
       @user = User.find(current_user.id)
+      @client = Client.find_by_id(params[:id])
       erb :'projects/new'
     else
       redirect '/login'
