@@ -2,13 +2,10 @@ class ProjectsController < ApplicationController
   # Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
 
   get '/projects' do
-    if logged_in?
-      @user = User.find(current_user.id)
-      @client = current_user.clients.find_by(name: params[:client])
-      erb :'projects/index'
-    else
-      redirect '/login'
-    end
+    authenticate_user
+    @user = User.find(current_user.id)
+    @client = current_user.clients.find_by(name: params[:client])
+    erb :'projects/index'
   end
 
   get '/projects/new' do
@@ -23,14 +20,11 @@ class ProjectsController < ApplicationController
   end
 
   get '/projects/:id' do
-    if logged_in?
-      @user = User.find(current_user.id)
-      @client = Client.find_by_id(params[:id])
-      @project = Project.find_by_id(params[:id])
-      erb :'projects/show'
-    else
-      redirect to '/login'
-    end
+    authenticate_user
+    @user = User.find(current_user.id)
+    @client = Client.find_by_id(params[:id])
+    @project = Project.find_by_id(params[:id])
+    erb :'projects/show'
   end
 
   get '/projects/:id/edit' do
@@ -47,5 +41,5 @@ class ProjectsController < ApplicationController
     @project.delete
     redirect '/projects'
   end
-  
+
 end
