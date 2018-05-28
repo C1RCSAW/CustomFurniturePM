@@ -49,6 +49,12 @@ class ClientsController < ApplicationController
  end
 
  patch 'clients/:id' do
-
+   authenticate_user
+   client = Client.find_by(id: params[:id])
+   client.update(params[:client])
+   if !client.valid?
+     redirect("clients/#{client.id}/edit")
+   end
+   redirect("/clients/#{client.id}")
  end
 end
