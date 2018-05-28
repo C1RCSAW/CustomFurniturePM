@@ -24,9 +24,7 @@
 
 <h2>Projects</h2>
 
-<% @client.projects.each do |client| %>
-    <h3> <a href="/projects/<%= project.id %>"> <%= project.name %></a> </h3>
-<% end %>
+<%= erb :'projects/index' %>
 
 <form method="post" action="/projects/new">
   <input id="hidden" type="hidden" name="_method" value="GET">
