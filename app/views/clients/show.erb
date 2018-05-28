@@ -7,14 +7,14 @@
   <li><h3>Phone Number: <%= @client.phone_number %></h3></li>
 </ul>
 
-<form method="post" action="/clients/<%=@client.id%>/delete">
-  <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Client">
-</form>
-
 <form method="post" action="/clients/<%=@client.id%>/edit">
   <input id="hidden" type="hidden" name="_method" value="GET">
   <input type="submit" value="Edit Client">
+</form>
+
+<form method="post" action="/clients/<%=@client.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Client">
 </form>
 
 <form method="post" action="/clients">

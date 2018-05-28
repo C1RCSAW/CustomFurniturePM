@@ -1,8 +1,8 @@
 <h1>Edit <%= @user.name %>'s Client, <%= @client.name %> </h1>
 
 
-<form method="post" action="/clients/<%=@client.id%>">
-  <input id="hidden" type="hidden" name="_method" value="PATCH">
+<form method="post" action="/clients/<%= @client.id%>">
+  <input id="hidden" type="hidden" name="_method" value="patch">
   <input class="" type="text" name="client[name]" placeholder="Client Name*" value="<%= @client.name %>" required>
   <br/>
   <input class="" type="email" name="client[email]" placeholder="Client Email*" value="<%= @client.email %>" required>
