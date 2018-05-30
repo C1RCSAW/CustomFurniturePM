@@ -17,4 +17,8 @@ class CostsController < ApplicationController
     erb :'costs/new'
   end
 
+  post '/costs' do
+    authenticate_user
+  end
+
 end
