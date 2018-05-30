@@ -1,0 +1,34 @@
+<h1>Update <%= @client.name %>'s <%= @project.name %> Project </h1>
+
+<form method="post" action="/projects/<%=@project.id%>">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input class="" type="text" name="project[name]" placeholder="Project Name" value="<%= @project.name %>">
+  <br/>
+  <input class=""type="text" name="project[furniture_type]" placeholder="Furniture Type" value="<%= @project.furniture_type %>">
+  <br/>
+  <input class=""type="text" name="project[material]" placeholder="Material" value="<%= @project.material %>">
+  <br/>
+  <input class="" type="text" name="project[description]" placeholder="Description" value="<%= @project.description %>">
+  <br/>
+  Client Price:
+  <br/>
+  $<input class=""type="number" name="project[price_to_client]" placeholder="0.00" step="0.01" value="<%= @project.price_to_client %>">
+  <br/>
+  Project Status:
+  <br/>
+  <input class=""type="text" name="project[status]" list="Project Status" value="<%= @project.status %>">
+    <datalist id="Project Status">
+      <option value="design phase">
+      <option value="in production">
+      <option value="ready for delivery">
+      <option value="complete">
+      <option value="delay">
+    </datalist>
+  <br/>
+  <input class="" type="submit" value="Update Project">
+</form>
+
+<form method="post" action="/projects/<%=@project.id%>">
+  <input id="hidden" type="hidden" name="_method" value="GET">
+  <input type="submit" value="Cancel">
+</form>

@@ -1,7 +1,18 @@
-<% if @client.projects.length == 0 %>
-  <h3>No Projects...  Yet!</h3>
-  <% else %>
+<h1><%= @client.name %>'s Projects</h1>
+  <% if @client.projects.length == 0 %>
+    <h3>No Projects...  Yet!</h3>
+    <% else %>
   <% @client.projects.each do |project| %>
-    <h3> <a href="/projects/<%= project.id %>"> <%= project.name %></a> </h3>
+    <h3><a href="/projects/<%= project.id %>"> <%= project.name %></a></h3>
+    <% end %>
   <% end %>
-<% end %>
+
+<form method="post" action="/projects/new">
+  <input id="hidden" type="hidden" name="_method" value="GET">
+  <input type="submit" value="Add Project">
+</form>
+
+<form method="post" action="/clients">
+  <input id="hidden" type="hidden" name="_method" value="GET">
+  <input type="submit" value="Back to List of Clients">
+</form>

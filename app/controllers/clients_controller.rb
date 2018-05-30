@@ -19,7 +19,7 @@ class ClientsController < ApplicationController
     if client.save
       redirect '/clients'
     else
-      redirect '/client/new'
+      redirect '/clients/new'
     end
   end
 
@@ -27,6 +27,7 @@ class ClientsController < ApplicationController
     authenticate_user
     @user = User.find(current_user.id)
     @client = Client.find_by_id(params[:id])
+    session[:client_id] = @client.id
     erb :'clients/show'
   end
 

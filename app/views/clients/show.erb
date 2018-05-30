@@ -1,6 +1,4 @@
 <h1><%= @user.name %>'s client</h1></br>
-
-
 <h2><%= @client.name %></h2>
 <ul>
   <li><h3>Email: <%= @client.email %></h3></li>
@@ -22,9 +20,15 @@
   <input type="submit" value="Back to List of Clients">
 </form>
 
-<h2>Projects</h2>
+<h2><%= @client.name %>'s Projects</h2>
 
-<%= erb :'projects/index' %>
+<% if @client.projects.length == 0 %>
+  <h3>No Projects...  Yet!</h3>
+  <% else %>
+<% @client.projects.each do |project| %>
+  <h3><a href="/projects/<%= project.id %>"> <%= project.name %></a></h3>
+  <% end %>
+<% end %>
 
 <form method="post" action="/projects/new">
   <input id="hidden" type="hidden" name="_method" value="GET">

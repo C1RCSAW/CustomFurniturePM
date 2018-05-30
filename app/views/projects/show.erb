@@ -1,7 +1,23 @@
-<h1><%= @client.name %>'s custom furniture project</h1>
-<h2><%= @project.furniture_type %></h2>
-<h2><%= @project.material %></h2>
-<h2><%= @project.description %></h2>
-<h2><%= @project.status %></h2>
-<h2><%= @project.price_to_client %></h2>
-<h2><%= @project.profit %></h2>
+<h1><%= @client.name %>'s project</h1>
+
+<h2>Name: <%= @project.name %></h2>
+<h2>Type: <%= @project.furniture_type %></h2>
+<h2>Material: <%= @project.material %></h2>
+<h2>Description: <%= @project.description %></h2>
+<h2>Status: <%= @project.status %></h2>
+<h2>Price to Client: $<%= @project.price_to_client %></h2>
+
+<form method="post" action="/projects/<%=@project.id%>/edit">
+  <input id="hidden" type="hidden" name="_method" value="GET">
+  <input type="submit" value="Update Project">
+</form>
+
+<form method="post" action="/projects/<%=@project.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Project">
+</form>
+
+<form method="post" action="/projects">
+  <input id="hidden" type="hidden" name="_method" value="GET">
+  <input type="submit" value="Back to <%= @client.name %>'s Projects">
+</form>

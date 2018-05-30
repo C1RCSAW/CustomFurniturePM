@@ -1,1 +1,35 @@
-<h1>Hello, <%= @user.name %> this is your client from projects/new</h1>
+<h1>Alright, <%= @user.name %> lets start a new project for <%= @client.name %> </h1>
+
+<form method="post" action="/projects">
+  <input class="" type="text" name="project[name]" placeholder="Project Name">
+  <br/>
+  <input class=""type="text" name="project[furniture_type]" placeholder="Furniture Type">
+  <br/>
+  <input class=""type="text" name="project[material]" placeholder="Material">
+  <br/>
+  <input class="" type="text" name="project[description]" placeholder="Description">
+  <br/>
+  Client Price:
+  <br/>
+  $<input class=""type="number" name="project[price_to_client]" placeholder="0.00" step="0.01">
+  <br/>
+  Project Status:
+  <br/>
+  <input class=""type="text" name="project[status]" list="Project Status">
+    <datalist id="Project Status">
+      <option value="design phase">
+      <option value="in production">
+      <option value="ready for delivery">
+      <option value="complete">
+      <option value="delay">
+    </datalist>
+  <br/>
+  <input class="" type="submit" value="Create Project">
+</form>
+
+OR
+
+<form method="post" action="/clients/<%=@client.id%>">
+  <input id="hidden" type="hidden" name="_method" value="GET">
+  <input type="submit" value="Cancel">
+</form>
