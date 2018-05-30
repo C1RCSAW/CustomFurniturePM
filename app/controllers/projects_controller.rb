@@ -31,6 +31,7 @@ class ProjectsController < ApplicationController
     @user = User.find(current_user.id)
     @client = Client.find_by_id(session[:client_id])
     @project = Project.find_by_id(params[:id])
+    session[:project_id] = @project.id
     erb :'projects/show'
   end
 
