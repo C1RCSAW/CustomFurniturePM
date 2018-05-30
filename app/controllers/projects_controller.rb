@@ -11,14 +11,13 @@ class ProjectsController < ApplicationController
   get '/projects/new' do
     authenticate_user
     @user = User.find(current_user.id)
-    @client = Client.find_by(id: session[:client_id])
-    @project = Project.new
+    @client = Client.find(current_client.id)
     erb :'projects/new'
   end
 
   post '/projects' do
     authenticate_user
-    @project = Client.find_by(id: session[:client_id]).projects.build(params[:project])
+    @project = Client.find(current_client.id).projects.build(params[:project])
     if @project.save
       redirect '/projects'
     else
@@ -29,7 +28,7 @@ class ProjectsController < ApplicationController
   get '/projects/:id' do
     authenticate_user
     @user = User.find(current_user.id)
-    @client = Client.find_by_id(session[:client_id])
+    @client = Client.find(current_client.id)
     @project = Project.find_by_id(params[:id])
     session[:project_id] = @project.id
     erb :'projects/show'
@@ -38,7 +37,7 @@ class ProjectsController < ApplicationController
   get '/projects/:id/edit' do
     authenticate_user
     @user = User.find(current_user.id)
-    @client = Client.find_by_id(session[:client_id])
+    @client = Client.find(current_client.id)
     @project = Project.find(params[:id])
     erb :'projects/edit'
   end

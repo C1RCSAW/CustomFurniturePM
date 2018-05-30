@@ -6,6 +6,8 @@
 <h2>Description: <%= @project.description %></h2>
 <h2>Status: <%= @project.status %></h2>
 <h2>Price to Client: $<%= @project.price_to_client %></h2>
+<h2>Cost to Produce: $<%= @project.total_cost %> <a href="/costs">See Costs</a></h2>
+<h2>Profit: $<%= @project.profit %></h2>
 
 <form method="post" action="/projects/<%=@project.id%>/edit">
   <input id="hidden" type="hidden" name="_method" value="GET">

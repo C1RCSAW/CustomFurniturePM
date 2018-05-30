@@ -1,0 +1,6 @@
+<h1>Add a cost to <%= @client.name %>'s <%= @project.name %> project</h1>
+
+<form method="post" action="/costs">
+  <input id="hidden" type="hidden" name="_method" value="GET">
+  <input type="submit" value="Back to Cost List">
+</form>

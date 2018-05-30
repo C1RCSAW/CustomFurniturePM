@@ -1,0 +1,19 @@
+<h1>List of costs for <%= @client.name %>'s <%= @project.name %> project</h1>
+
+<% if @project.costs.length == 0 %>
+  <h3>No costs have been added to this project</h3>
+  <% else %>
+<% @project.costs.each do |cost| %>
+  <h3><a href="/costs/<%= cost.id %>"> <%= cost.amount %></a></h3>
+  <% end %>
+<% end %>
+
+<form method="post" action="/costs/new">
+  <input id="hidden" type="hidden" name="_method" value="GET">
+  <input type="submit" value="Add Cost">
+</form>
+
+<form method="post" action="/projects/<%=@project.id%>">
+  <input id="hidden" type="hidden" name="_method" value="GET">
+  <input type="submit" value="Back to <%=@project.name%>">
+</form>

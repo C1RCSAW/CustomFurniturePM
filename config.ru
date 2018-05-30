@@ -7,7 +7,8 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
+use CostsController
 use ProjectsController
-use UsersController
 use ClientsController
+use UsersController
 run ApplicationController
