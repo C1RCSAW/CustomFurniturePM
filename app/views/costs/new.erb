@@ -1,6 +1,14 @@
 <h1>Add a cost to <%= @client.name %>'s <%= @project.name %> project</h1>
 
 <form method="post" action="/costs">
+  $<input class="" type="number" name="cost[amount]" placeholder="0.00" step="0.01">
+  <br/>
+  *<input class="" type="text" name="cost[description]" placeholder="description">
+  <br/>
+  <input class="" type="submit" value="Add Cost">
+</form>
+
+<form method="post" action="/costs">
   <input id="hidden" type="hidden" name="_method" value="GET">
   <input type="submit" value="Back to Cost List">
 </form>

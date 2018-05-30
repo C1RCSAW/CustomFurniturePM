@@ -19,6 +19,21 @@ class CostsController < ApplicationController
 
   post '/costs' do
     authenticate_user
+    @cost = Project.find(current_project.id).costs.build(params[:cost])
+    if @cost.save
+      redirect '/costs'
+    else
+      redirect '/costs/new'
+    end
+  end
+
+  get '/costs/:id' do
+    authenticate_user
+    @user = User.find(current_user.id)
+    @client = Client.find(current_client.id)
+    @project = Project.find(current_project.id)
+    @cost = Cost.find_by_id(params[:id])
+    erb :'costs/show'
   end
 
 end
