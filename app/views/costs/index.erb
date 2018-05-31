@@ -4,9 +4,10 @@
   <h3>No costs have been added to this project</h3>
   <% else %>
 <% @project.costs.each do |cost| %>
-  <h3><a href="/costs/<%= cost.id %>"> <%= cost.amount %></a></h3>
+  <h3><%= cost.amount %> -- <%= cost.description %></a></h3>
   <% end %>
 <% end %>
+<h3>Total Cost: <%= @project.total_cost %></h3>
 
 <form method="post" action="/costs/new">
   <input id="hidden" type="hidden" name="_method" value="GET">
