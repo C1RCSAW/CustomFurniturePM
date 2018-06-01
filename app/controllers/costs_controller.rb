@@ -36,23 +36,24 @@ class CostsController < ApplicationController
     erb :'costs/show'
   end
 
-  get 'costs/:id/edit' do
+  get '/costs/:id/edit' do
     authenticate_user
     @user = User.find(current_user.id)
     @client = Client.find(current_client.id)
     @project = Project.find(current_project.id)
-    @cost = Cost.find(params[:id])
+    @cost = Cost.find_by_id(params[:id])
+    session[:cost_id] = @cost.id
     erb :'costs/edit'
   end
 
-  patch '/projects/:id' do
+  patch '/costs/' do
     authenticate_user
-    cost = Cost.find(params[:id])
+    cost = Cost.find_by(id: session[:cost_id]) if session[:cost_id]
     cost.update(params[:cost])
     if !project.valid?
       redirect("costs/#{cost.id}/edit")
     else
-      redirect("costs/#{cost.id}")
+      redirect '/costs'
     end
   end
 

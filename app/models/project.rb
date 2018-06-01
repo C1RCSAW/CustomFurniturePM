@@ -7,10 +7,10 @@ class Project < ActiveRecord::Base
   end
 
   def profit
-    if @total_cost == !nil
-      self.price_to_client - @total_cost
-    else
+    if @total_cost == nil
       "N/A, Add your costs to this project"
+    else
+      self.price_to_client - @total_cost
     end
   end
 end
