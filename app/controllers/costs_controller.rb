@@ -36,4 +36,31 @@ class CostsController < ApplicationController
     erb :'costs/show'
   end
 
+  get 'costs/:id/edit' do
+    authenticate_user
+    @user = User.find(current_user.id)
+    @client = Client.find(current_client.id)
+    @project = Project.find(current_project.id)
+    @cost = Cost.find(params[:id])
+    erb :'costs/edit'
+  end
+
+  patch '/projects/:id' do
+    authenticate_user
+    cost = Cost.find(params[:id])
+    cost.update(params[:cost])
+    if !project.valid?
+      redirect("costs/#{cost.id}/edit")
+    else
+      redirect("costs/#{cost.id}")
+    end
+  end
+
+  delete '/costs/:id/delete' do
+    authenticate_user
+    @cost = Cost.find(params[:id])
+    @project.delete
+    redirect '/projects'
+  end
+
 end
