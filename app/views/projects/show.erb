@@ -6,7 +6,11 @@
 <h2>Description: <%= @project.description %></h2>
 <h2>Status: <%= @project.status %></h2>
 <h2>Price to Client: $<%= @project.price_to_client %></h2>
-<h2>Cost to Produce: $<%= @project.total_cost %> <a href="/costs">See Costs</a></h2>
+ <% if @project.costs.length == 0 %>
+   <h2>No costs have been added to this project <a href="/costs/new">Add Cost</a></h2>
+ <% else %>
+   <h2>Cost to Produce: $<%= @project.total_cost %> <a href="/costs">See Costs</a></h2>
+ <% end %>
 <h2>Profit: $<%= @project.profit %></h2>
 
 <form method="post" action="/projects/<%=@project.id%>/edit">

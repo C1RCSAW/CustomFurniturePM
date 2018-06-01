@@ -3,10 +3,14 @@ class Project < ActiveRecord::Base
   has_many :costs ## => @project.costs
 
   def total_cost
-    @total_cost ||= self.costs.sum(:amount)
+    @total_cost ||= self.costs.sum(:amount) if self.costs.length > 0
   end
 
   def profit
-    self.price_to_client - @total_cost
+    if @total_cost == !nil
+      self.price_to_client - @total_cost
+    else
+      "N/A, Add your costs to this project"
+    end
   end
 end
