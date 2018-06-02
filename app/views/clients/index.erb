@@ -1,9 +1,12 @@
 <h1>Welcome to the Custom Furniture Project Manager</h1>
 <h1> Hello, <%= @user.name %>, Here is your list of clients. </h1>
-
-<% @user.clients.each do |client| %>
-    <h2> <a href="/clients/<%= client.id %>"> <%= client.name %></a> </h2>
-<% end %>
+    <% if @user.clients.length == 0 %>
+      <h2>You have no Clients... Yet!</h2>
+    <% else %>
+      <% @user.clients.each do |client| %>
+        <h2> <a href="/clients/<%= client.id %>"> <%= client.name %></a> </h2>
+    <% end %>
+  <% end %>
 
 <form method="post" action="/clients/new">
   <input id="hidden" type="hidden" name="_method" value="GET">
