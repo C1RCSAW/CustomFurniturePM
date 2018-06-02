@@ -46,11 +46,11 @@ class CostsController < ApplicationController
     erb :'costs/edit'
   end
 
-  patch '/costs/' do
+  patch '/costs' do
     authenticate_user
     cost = Cost.find_by(id: session[:cost_id]) if session[:cost_id]
     cost.update(params[:cost])
-    if !project.valid?
+    if !cost.valid?
       redirect("costs/#{cost.id}/edit")
     else
       redirect '/costs'
@@ -60,8 +60,8 @@ class CostsController < ApplicationController
   delete '/costs/:id/delete' do
     authenticate_user
     @cost = Cost.find(params[:id])
-    @project.delete
-    redirect '/projects'
+    @cost.delete
+    redirect '/costs'
   end
 
 end
