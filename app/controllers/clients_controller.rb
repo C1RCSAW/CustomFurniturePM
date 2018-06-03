@@ -26,7 +26,7 @@ class ClientsController < ApplicationController
   get '/clients/:id' do
     authenticate_user
     @user = User.find(current_user.id)
-    @client = Client.find_by_id(params[:id])
+    @client = @user.clients.find_by_id(params[:id])
     session[:client_id] = @client.id
     erb :'clients/show'
   end

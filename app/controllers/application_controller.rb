@@ -31,7 +31,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_client
-      @current_client ||= Client.find_by(id: session[:client_id]) if session[:client_id]
+      @current_client ||= @current_user.clients.find_by(id: session[:client_id]) if session[:client_id]
     end
 
     def current_project
