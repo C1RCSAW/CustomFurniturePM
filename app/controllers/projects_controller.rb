@@ -3,22 +3,22 @@ class ProjectsController < ApplicationController
 
   get '/projects' do
     authenticate_user
-    @user = User.find(current_user.id)
-    @client = Client.find(current_client.id)
+    @user = current_user ##User.find(current_user.id)
+    @client = current_client
     erb :'projects/index'
   end
 
   get '/projects/new' do
     authenticate_user
-    @user = User.find(current_user.id)
-    @client = Client.find(current_client.id)
+    @user = current_user ##User.find(current_user.id)
+    @client = current_client
     erb :'projects/new'
   end
 
   post '/projects' do
     authenticate_user
-    @project = Client.find(current_client.id).projects.build(params[:project])
-    if @project.save
+    project = Client.find(current_client.id).projects.build(params[:project])
+    if project.save
       redirect '/projects'
     else
       redirect '/projects/new'
@@ -27,18 +27,18 @@ class ProjectsController < ApplicationController
 
   get '/projects/:id' do
     authenticate_user
-    @user = User.find(current_user.id)
-    @client = Client.find(current_client.id)
-    @project = Project.find_by_id(params[:id])
+    @user = current_user ##User.find(current_user.id)
+    @client = current_client
+    @project = @client.projects.find_by_id(params[:id])
     session[:project_id] = @project.id
     erb :'projects/show'
   end
 
   get '/projects/:id/edit' do
     authenticate_user
-    @user = User.find(current_user.id)
-    @client = Client.find(current_client.id)
-    @project = Project.find(params[:id])
+    @user = current_user ##User.find(current_user.id)
+    @client = current_client
+    @project = @client.projects.find_by_id(params[:id])
     erb :'projects/edit'
   end
 
@@ -55,8 +55,8 @@ class ProjectsController < ApplicationController
 
   delete '/projects/:id/delete' do
     authenticate_user
-    @project = Project.find(params[:id])
-    @project.delete
+    project = current_client.projects.find(params[:id])
+    project.delete
     redirect '/projects'
   end
 

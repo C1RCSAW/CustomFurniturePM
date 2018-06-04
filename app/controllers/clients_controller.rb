@@ -51,9 +51,8 @@ class ClientsController < ApplicationController
 
  delete '/clients/:id/delete' do
    authenticate_user
-   @user = current_user
-   @client = @user.clients.find_by_id(params[:id])
-   @client.delete
+   client = current_user.clients.find_by_id(params[:id])
+   client.delete
    redirect '/clients'
  end
 
