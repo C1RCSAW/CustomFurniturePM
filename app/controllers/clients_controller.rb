@@ -34,7 +34,7 @@ class ClientsController < ApplicationController
   get '/clients/:id/edit' do
     authenticate_user
     @user = User.find(current_user.id)
-    @client = Client.find(params[:id])
+    @client = @user.clients.find_by_id(params[:id])
     erb :'clients/edit'
   end
 
@@ -51,7 +51,7 @@ class ClientsController < ApplicationController
 
  delete '/clients/:id/delete' do
    authenticate_user
-   @client = Client.find(params[:id])
+   @client = @user.clients.find_by_id(params[:id])
    @client.delete
    redirect '/clients'
  end

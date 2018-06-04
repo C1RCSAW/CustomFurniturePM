@@ -1,24 +1,29 @@
 class UsersController < ApplicationController
   get '/users/:slug' do
-    @user = User.find_by_slug(params[:slug])
-    erb :'users/show_user'
+    authenticate_user
+    if current_user.slug == params[:slug]
+      @user = User.find_by_slug(params[:slug])
+      erb :'users/show_user'
+    else
+      redirect '/login'
+    end
   end
 
   get '/signup' do
   if logged_in?
-    redirect to '/clients' 
+    redirect '/clients'
   else
     erb :'users/create_user'
   end
 end
 
-post '/signup' do
+post '/signup' do ## would need to rewrite if regex validations used in models/user.rb
   if params[:email] == "" || params[:username] == "" || params[:password] == ""
-    redirect to '/signup'
+    redirect '/signup' 
   else
     user = User.create(params)
     session[:user_id] = user.id
-    redirect to '/clients'
+    redirect '/clients'
   end
 end
 
@@ -26,7 +31,7 @@ end
     if !logged_in?
       erb :'login'
     else
-      redirect to '/clients'
+      redirect '/clients'
     end
   end
 
@@ -34,18 +39,18 @@ end
     user = User.find_by(:username => params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect to '/clients'
+      redirect '/clients'
     else
-      redirect to '/'
+      redirect '/'
     end
   end
 
   get '/logout' do
     if logged_in?
       session.destroy
-      redirect to '/login'
+      redirect '/login'
     else
-      redirect to '/signup'
+      redirect '/signup'
     end
   end
 end
