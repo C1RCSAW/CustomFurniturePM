@@ -3,45 +3,36 @@ class CostsController < ApplicationController
 
   get '/costs' do
     authenticate_user
-    @user = User.find(current_user.id)
-    @client = Client.find(current_client.id)
-    @project = Project.find(current_project.id)
+    @user = current_user
+    @client = current_client
+    @project = current_project
     erb :'costs/index'
   end
 
   get '/costs/new' do
     authenticate_user
-    @user = User.find(current_user.id)
-    @client = Client.find(current_client.id)
-    @project = Project.find(current_project.id)
+    @user = current_user
+    @client = current_client
+    @project = current_project
     erb :'costs/new'
   end
 
   post '/costs' do
     authenticate_user
-    @cost = Project.find(current_project.id).costs.build(params[:cost])
-    if @cost.save
+    cost = Project.find(current_project.id).costs.build(params[:cost])
+    if cost.save
       redirect '/costs'
     else
       redirect '/costs/new'
     end
   end
 
-  get '/costs/:id' do
-    authenticate_user
-    @user = User.find(current_user.id)
-    @client = Client.find(current_client.id)
-    @project = Project.find(current_project.id)
-    @cost = Cost.find_by_id(params[:id])
-    erb :'costs/show'
-  end
-
   get '/costs/:id/edit' do
     authenticate_user
-    @user = User.find(current_user.id)
-    @client = Client.find(current_client.id)
-    @project = Project.find(current_project.id)
-    @cost = Cost.find_by_id(params[:id])
+    @user = current_user
+    @client = current_client
+    @project = current_project
+    @cost = @project.costs.find_by_id(params[:id])
     session[:cost_id] = @cost.id
     erb :'costs/edit'
   end
@@ -59,8 +50,8 @@ class CostsController < ApplicationController
 
   delete '/costs/:id/delete' do
     authenticate_user
-    @cost = Cost.find(params[:id])
-    @cost.delete
+    cost = current_project.costs.find(params[:id])
+    cost.delete
     redirect '/costs'
   end
 

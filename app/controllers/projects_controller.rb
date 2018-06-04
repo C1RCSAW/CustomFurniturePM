@@ -3,14 +3,14 @@ class ProjectsController < ApplicationController
 
   get '/projects' do
     authenticate_user
-    @user = current_user ##User.find(current_user.id)
+    @user = current_user
     @client = current_client
     erb :'projects/index'
   end
 
   get '/projects/new' do
     authenticate_user
-    @user = current_user ##User.find(current_user.id)
+    @user = current_user
     @client = current_client
     erb :'projects/new'
   end
@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
 
   get '/projects/:id' do
     authenticate_user
-    @user = current_user ##User.find(current_user.id)
+    @user = current_user
     @client = current_client
     @project = @client.projects.find_by_id(params[:id])
     session[:project_id] = @project.id
@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
 
   get '/projects/:id/edit' do
     authenticate_user
-    @user = current_user ##User.find(current_user.id)
+    @user = current_user
     @client = current_client
     @project = @client.projects.find_by_id(params[:id])
     erb :'projects/edit'
