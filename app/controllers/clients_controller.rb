@@ -3,13 +3,13 @@ class ClientsController < ApplicationController
 
   get '/clients' do
     authenticate_user
-    @user = User.find(current_user.id)
+    @user = current_user
     erb :'clients/index'
   end
 
   get '/clients/new' do
     authenticate_user
-    @user = User.find(current_user.id)
+    @user = current_user
     erb :'clients/new'
   end
 
@@ -25,7 +25,7 @@ class ClientsController < ApplicationController
 
   get '/clients/:id' do
     authenticate_user
-    @user = User.find(current_user.id)
+    @user = current_user
     @client = @user.clients.find_by_id(params[:id])
     session[:client_id] = @client.id
     erb :'clients/show'
@@ -33,7 +33,7 @@ class ClientsController < ApplicationController
 
   get '/clients/:id/edit' do
     authenticate_user
-    @user = User.find(current_user.id)
+    @user = current_user
     @client = @user.clients.find_by_id(params[:id])
     erb :'clients/edit'
   end
@@ -51,6 +51,7 @@ class ClientsController < ApplicationController
 
  delete '/clients/:id/delete' do
    authenticate_user
+   @user = current_user
    @client = @user.clients.find_by_id(params[:id])
    @client.delete
    redirect '/clients'
