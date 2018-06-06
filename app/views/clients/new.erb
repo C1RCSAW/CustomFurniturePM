@@ -1,20 +1,11 @@
 <h1>New Client for <%= @user.name %></h1>
 
-<% if error.messages %>
-  <% error.full_messages.each do |message| %>
-
-  <%= message %>
-
-  <%end%>
-<%end%>
-
-
 
 <form method="post" action="/clients">
-  <input class="" type="text" name="client[name]" placeholder="Client Name*" required>
+  <input class="" type="text" name="client[name]" placeholder="Client Name*">
   <!-- validation also enforced by validations defined in Client model Class -->
   <br/>
-  <input class=""type="email" name="client[email]" placeholder="Client Email*" required>
+  <input class=""type="text" name="client[email]" placeholder="Client Email*">
   <!-- validation also enforced by validations defined in Client model Class -->
   <br/>
   <input class=""type="tel" name="client[phone_number]" placeholder="Client Phone Number">

@@ -15,8 +15,8 @@ class ClientsController < ApplicationController
 
   post '/clients' do
     authenticate_user
-    @client = current_user.clients.build(params[:client])
-    if @client.save
+    client = current_user.clients.build(params[:client])
+    if client.save
       redirect '/clients'
     else
       redirect '/clients/new'
