@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :name, :username, :email, presence: true
-  validates_uniqueness_of :name, :username, :email
+  validates_uniqueness_of :username, :email
 
   validates :name, format: { with: /\A[a-zA-Z\s]+\z/i,
                              message: 'name can only have letters'}
