@@ -4,6 +4,9 @@ class Client < ActiveRecord::Base
 
   validates :name, presence: true
 
-  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, message: 'must be in the form of an email' }
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :phone_number, format: { with: /\(?([0-9]{3})\)?([ .-]?)(\1)\2([0-9]{4})/ }
+
+    # (?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})
 
 end
