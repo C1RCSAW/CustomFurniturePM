@@ -2,6 +2,8 @@ class Project < ActiveRecord::Base
   belongs_to :client ## => @project.client ## has embedded validation
   has_many :costs ## => @project.costs
 
+  validates :name, :furniture_type, :material, :description, :price_to_client, :status, presence: true
+
   def total_cost
     @total_cost ||= self.costs.sum(:amount) if self.costs.length > 0
   end
