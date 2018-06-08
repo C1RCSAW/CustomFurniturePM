@@ -39,7 +39,8 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect '/clients'
     else
-      redirect '/'
+      @login_error = "invalid username or password"
+      erb :'login'
     end
   end
 
