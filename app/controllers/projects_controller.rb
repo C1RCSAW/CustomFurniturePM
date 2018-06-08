@@ -17,11 +17,13 @@ class ProjectsController < ApplicationController
 
   post '/projects' do
     authenticate_user
-    project = Client.find(current_client.id).projects.build(params[:project])
-    if project.save
+    @project = current_client.projects.build(params[:project])
+    if @project.save
       redirect '/projects'
     else
-      redirect '/projects/new'
+      @user = current_user
+      @client = current_client
+      erb :'projects/new'
     end
   end
 
@@ -44,12 +46,13 @@ class ProjectsController < ApplicationController
 
   patch '/projects/:id' do
     authenticate_user
-    project = Project.find(params[:id])
-    project.update(params[:project])
-    if !project.valid?
-      redirect("projects/#{project.id}/edit")
+    @project = Project.find(params[:id])
+    @project.update(params[:project])
+    if !@project.valid?
+      @client = current_client
+      erb :'projects/edit'
     else
-      redirect("projects/#{project.id}")
+      redirect("projects/#{@project.id}")
     end
   end
 
