@@ -15,11 +15,12 @@ class ClientsController < ApplicationController
 
   post '/clients' do
     authenticate_user
-    client = current_user.clients.build(params[:client])
-    if client.save
+    @client = current_user.clients.build(params[:client])
+    if @client.save
       redirect '/clients'
     else
-      redirect '/clients/new'
+      @user = current_user
+      erb :'clients/new'
     end
   end
 
@@ -40,12 +41,13 @@ class ClientsController < ApplicationController
 
  patch '/clients/:id' do
    authenticate_user
-   client = Client.find(params[:id])
-   client.update(params[:client])
-   if !client.valid?
-     redirect("clients/#{client.id}/edit")
+   @client = Client.find(params[:id])
+   @client.update(params[:client])
+   if !@client.valid?
+     @user = current_user
+     erb :'clients/edit'
    else
-     redirect("/clients/#{client.id}")
+     redirect("/clients/#{@client.id}")
    end
  end
 

@@ -1,5 +1,8 @@
 <h1>New Client for <%= @user.name %></h1>
 
+<% if @client && @client.errors.any? %>
+  <%= @client.errors.full_messages.join("<br/>") %>
+<% end %>
 
 <form method="post" action="/clients">
   <input class="" type="text" name="client[name]" placeholder="Client Name*">
