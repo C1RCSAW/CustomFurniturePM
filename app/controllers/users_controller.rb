@@ -9,22 +9,21 @@ class UsersController < ApplicationController
   end
 
   get '/signup' do
-  if logged_in?
-    redirect '/clients'
-  else
-    erb :'users/create_user'
+    if logged_in?
+      redirect '/clients'
+    else
+      erb :'users/create_user'
+    end
   end
-end
 
-post '/signup' do
-  if params[:email] == "" || params[:username] == "" || params[:password] == ""
-    redirect '/signup'
-  else
-    user = User.create(params)
-    session[:user_id] = user.id
-    redirect '/clients'
+  post '/signup' do
+    @user = User.new(params)
+    if @user.save
+      redirect '/login'
+    else
+      erb :'users/create_user'
+    end
   end
-end
 
   get '/login' do
     if !logged_in?
@@ -52,4 +51,5 @@ end
       redirect '/'
     end
   end
+
 end

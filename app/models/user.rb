@@ -7,10 +7,10 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username, :email
 
   validates :name, format: { with: /\A[a-zA-Z\s]+\z/i,
-                             message: 'name can only have letters'}
+                             message: 'can only have letters'}
 
   validates :username, format: { with: /\A[a-zA-Z0-9]+\z/i,
-                                 message: 'usernames only allows letters and numbrs' }
+                                 message: 'only allows letters and numbrs' }
 
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
                               message: 'must be in the form of an email address' }
