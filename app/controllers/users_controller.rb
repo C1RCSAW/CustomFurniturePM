@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 end
 
-post '/signup' do ## would need to rewrite if regex validations used in models/user.rb
+post '/signup' do
   if params[:email] == "" || params[:username] == "" || params[:password] == ""
     redirect '/signup'
   else
@@ -49,7 +49,7 @@ end
       session.destroy
       redirect '/login'
     else
-      redirect '/signup'
+      redirect '/'
     end
   end
 end
