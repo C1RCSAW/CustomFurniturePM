@@ -19,11 +19,13 @@ class CostsController < ApplicationController
 
   post '/costs' do
     authenticate_user
-    cost = Project.find(current_project.id).costs.build(params[:cost])
-    if cost.save
+    @cost = current_project.costs.build(params[:cost])
+    if @cost.save
       redirect '/costs'
     else
-      redirect '/costs/new'
+      @client = current_client
+      @project = current_project
+      erb :'costs/new'
     end
   end
 
@@ -39,10 +41,12 @@ class CostsController < ApplicationController
 
   patch '/costs' do
     authenticate_user
-    cost = Cost.find_by(id: session[:cost_id]) if session[:cost_id]
-    cost.update(params[:cost])
-    if !cost.valid?
-      redirect("costs/#{cost.id}/edit")
+    @cost = Cost.find_by(id: session[:cost_id]) if session[:cost_id]
+    @cost.update(params[:cost])
+    if !@cost.valid?
+      @client = current_client
+      @project = current_project
+      erb :'costs/edit'
     else
       redirect '/costs'
     end
