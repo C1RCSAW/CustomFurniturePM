@@ -27,16 +27,24 @@ class ClientsController < ApplicationController
   get '/clients/:id' do
     authenticate_user
     @user = current_user
-    @client = @user.clients.find_by_id(params[:id])
-    session[:client_id] = @client.id
-    erb :'clients/show'
+    if @client = @user.clients.find_by_id(params[:id])
+      session[:client_id] = @client.id
+      erb :'clients/show'
+    else
+      nice_try
+      erb :'clients/index'
+    end
   end
 
   get '/clients/:id/edit' do
     authenticate_user
     @user = current_user
-    @client = @user.clients.find_by_id(params[:id])
-    erb :'clients/edit'
+    if @client = @user.clients.find_by_id(params[:id])
+      erb :'clients/edit'
+    else
+      nice_try
+      erb :'clients/index'
+    end
   end
 
  patch '/clients/:id' do

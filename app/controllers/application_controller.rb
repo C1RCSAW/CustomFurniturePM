@@ -38,6 +38,10 @@ class ApplicationController < Sinatra::Base
       @current_project ||= Project.find_by(id: session[:project_id]) if session[:project_id]
     end
 
+    def nice_try
+      @nice_try = "you do not have access to that resource"
+    end
+
   end
 
 end
