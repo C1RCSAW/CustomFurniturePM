@@ -2,7 +2,9 @@
 
 A web application for makers to manage custom furniture projects. Users can register accounts, add/view/edit/delete clients, and add/view/edit/delete projects for each client as well as add/view/edit/delete costs for each project.
 
-## Development
+## Installation
+
+Fork and clone the repo
 
 CustomFurniturePM requires bundler for all of its gem dependencies. If you do not already have it installed, run
 
@@ -11,6 +13,14 @@ CustomFurniturePM requires bundler for all of its gem dependencies. If you do no
 then:
 
 ```$ bundle install```
+
+Run ```$ rake db:migrate``` to set up the database
+
+Run ```$ shotgun``` to start a local server on port 9393
+
+## Contribution
+
+Please create a descriptive pull request
 
 ## License
 
