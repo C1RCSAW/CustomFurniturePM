@@ -1,3 +1,5 @@
+<h2><%= @nice_try if @nice_try %></h2>
+
 <h1><%= @client.name %>'s Projects</h1>
   <% if @client.projects.length == 0 %>
     <h3>No Projects...  Yet!</h3>

@@ -31,17 +31,25 @@ class ProjectsController < ApplicationController
     authenticate_user
     @user = current_user
     @client = current_client
-    @project = @client.projects.find_by_id(params[:id])
-    session[:project_id] = @project.id
-    erb :'projects/show'
+    if @project = @client.projects.find_by_id(params[:id])
+      session[:project_id] = @project.id
+      erb :'projects/show'
+    else
+      nice_try
+      erb :'projects/index'
+    end
   end
 
   get '/projects/:id/edit' do
     authenticate_user
     @user = current_user
     @client = current_client
-    @project = @client.projects.find_by_id(params[:id])
-    erb :'projects/edit'
+    if @project = @client.projects.find_by_id(params[:id])
+      erb :'projects/edit'
+    else
+      nice_try
+      erb :'projects/index'
+    end
   end
 
   patch '/projects/:id' do
