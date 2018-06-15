@@ -19,7 +19,7 @@ class ClientsController < ApplicationController
     if @client.save
       redirect '/clients'
     else
-      @user = current_user
+      @user = current_user #might want to use flash in the future so that the url tracks with RESTful approach
       erb :'clients/new'
     end
   end
@@ -49,13 +49,17 @@ class ClientsController < ApplicationController
 
  patch '/clients/:id' do
    authenticate_user
-   @client = Client.find(params[:id])
-   @client.update(params[:client])
-   if !@client.valid?
-     @user = current_user
-     erb :'clients/edit'
+   @user = current_user
+   if @client = @user.clients.find_by_id(params[:id])
+     if @client.update(params[:client])
+       @user = current_user
+       erb :'clients/edit'
+     else
+       redirect("/clients/#{@client.id}")
+     end
    else
-     redirect("/clients/#{@client.id}")
+     nice_try
+     erb :'clients/index'
    end
  end
 

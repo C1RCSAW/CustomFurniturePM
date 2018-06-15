@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   # Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
 
-  get '/projects' do
+  get '/projects' do # get '/clients/:client_id/projects'
     authenticate_user
     @user = current_user
     @client = current_client
