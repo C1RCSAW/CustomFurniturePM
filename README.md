@@ -2,6 +2,8 @@
 
 A web application for makers to manage custom furniture projects. Users can register accounts, add/view/edit/delete clients, and add/view/edit/delete projects for each client as well as add/view/edit/delete costs for each project.
 
+Demo: https://custom-furniture-pm.herokuapp.com/
+
 ## Installation
 
 Fork and clone the repo
