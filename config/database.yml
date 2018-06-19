@@ -1,0 +1,20 @@
+
+development:
+  adapter: postgresql
+  database: custom_furniture_PM_development
+  pool: 5
+  timeout: 5000
+  template: template0
+test:
+  adapter: postgresql
+  database: custom_furniture_PM_test
+  pool: 5
+  timeout: 5000
+  template: template0
+
+production:
+  adapter: postgresql
+  database: fcustom_furniture_PM_production
+  pool: 5
+  timeout: 5000
+  template: template0
