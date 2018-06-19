@@ -4,7 +4,7 @@ A web application for makers to manage custom furniture projects. Users can regi
 
 Demo: https://custom-furniture-pm.herokuapp.com/
 
-## Installation
+## Local Installation
 
 Fork and clone the repo
 
