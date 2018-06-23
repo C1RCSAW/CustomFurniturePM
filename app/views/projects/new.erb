@@ -1,8 +1,12 @@
 <h1>Alright, <%= @user.name %> lets start a new project for <%= @client.name %> </h1>
 
-<% if @project && @project.errors.any? %>
-  <%= @project.errors.full_messages.join("<br/>") %>
-<% end %>
+<div class="errors">
+  <% if @project && @project.errors.any? %>
+    <%= @project.errors.full_messages.join("<br/>") %>
+  <% end %>
+</div>
+
+
 
 <form method="post" action="/projects">
   <input class="" type="text" name="project[name]" placeholder="Project Name">

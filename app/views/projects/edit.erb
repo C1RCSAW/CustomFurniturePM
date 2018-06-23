@@ -1,8 +1,10 @@
 <h1>Update <%= @client.name %>'s <%= @project.name %> Project </h1>
 
-<% if @project && @project.errors.any? %>
-  <%= @project.errors.full_messages.join("<br/>") %>
-<% end %>
+<div class="errors">
+  <% if @project && @project.errors.any? %>
+    <%= @project.errors.full_messages.join("<br/>") %>
+  <% end %>
+</div>
 
 <form method="post" action="/projects/<%=@project.id%>">
   <input id="hidden" type="hidden" name="_method" value="patch">

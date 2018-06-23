@@ -1,8 +1,12 @@
 <h1>Edit cost to <%= @client.name %>'s <%= @project.name %> project</h1>
 
-<% if @cost && @cost.errors.any? %>
-  <%= @cost.errors.full_messages.join("<br/>") %>
-<% end %>
+<div class="errors">
+  <% if @cost && @cost.errors.any? %>
+    <%= @cost.errors.full_messages.join("<br/>") %>
+  <% end %>
+</div>
+
+
 
 <form method="post" action="/costs">
   <input id="hidden" type="hidden" name="_method" value="patch">

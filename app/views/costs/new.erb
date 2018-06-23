@@ -1,8 +1,12 @@
 <h1>Add a cost to <%= @client.name %>'s <%= @project.name %> project</h1>
 
-<% if @cost && @cost.errors.any? %>
-  <%= @cost.errors.full_messages.join("<br/>") %>
-<% end %>
+<div class="errors">
+  <% if @cost && @cost.errors.any? %>
+    <%= @cost.errors.full_messages.join("<br/>") %>
+  <% end %>  
+</div>
+
+
 
 <form method="post" action="/costs">
   $<input class="" type="number" name="cost[amount]" placeholder="0.00" step="0.01">

@@ -1,8 +1,10 @@
 <h1>Sign Up for an Account</h1>
 
-<% if @user && @user.errors.any? %>
-  <%= @user.errors.full_messages.join("<br/>") %>
-<% end %>
+<div class="errors">
+  <% if @user && @user.errors.any? %>
+    <%= @user.errors.full_messages.join("<br/>") %>
+  <% end %>
+</div>
 
 <form action="/signup" method="post">
   <p> Name: <input type="text" name="name" value=""> </p>

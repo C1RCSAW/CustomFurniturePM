@@ -1,7 +1,9 @@
 <form action="/login" method="post">
   <h2>Log In</h2>
-
-  <%= @login_error if @login_error %>
+  
+  <div class="errors">
+    <%= @login_error if @login_error %>
+  </div>
 
   <h3> Username: <input type="text" name="username"> </h3>
   <h3> Password: <input type="password" name="password"> </h3>

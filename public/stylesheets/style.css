@@ -1,0 +1,16 @@
+* {
+  font-family: 'Telex', sans-serif;
+  font-weight: 800;
+}
+
+body {
+  text-align: left;
+  padding: 50px;
+  background: linear-gradient(to bottom, #ffffcc 60%, #003300 175%);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.errors {
+  color: tomato;
+}
