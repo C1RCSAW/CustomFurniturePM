@@ -10,7 +10,7 @@
   <body>
     <main>
     <%= yield %>
-    <h3>It's <%= Time.now.localtime.strftime("%A %B, %e %Y and the time is %I:%M%p") %></h3>
+    <h3>It's <%= Time.now.getlocal.strftime("%A %B, %e %Y and the time is %I:%M%p") %></h3>
     </main>
   </body>
 </html>
