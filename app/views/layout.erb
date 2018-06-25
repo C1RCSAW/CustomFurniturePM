@@ -10,7 +10,9 @@
   <body>
     <main>
     <%= yield %>
-    <h3>It's <%= Time.now.strftime("%A %B, %e %Y and the time is %I:%M%p") %></h3>
+    <% Time.zone =  'Eastern Time (US & Canada)' %>
+    <% t = Time.new %>
+    <h3>It's <%= t.strftime("%A %B, %e %Y and the time is %I:%M%p") %></h3>
     <!-- this will default to UTC timezone when deployed by Heroku, the fix is to either
     collect the time zone from Users when they sign up or use Javascript  -->
     </main>
